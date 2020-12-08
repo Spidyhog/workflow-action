@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('mongoose');
 const cors = require('cors');
+
 const app = express();
-app.use(bodyParser.json());
+
+app.use(bodyParser.json());     //Parsing the body as JSON
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(cors());
@@ -16,7 +18,7 @@ app.use((req, res, next) => {
 })
 
 
-app.use('/api/v1', require('./routes'));
+app.use('/api/v1', require('./routes'));       //API routes
 const PORT = process.env.PORT || 3000;
 
 var url = process.env.DB_URI; // add your mongoDB URL
